@@ -1,5 +1,5 @@
 {
-  "name": "pim",
+  "name": "box-ideas",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -14,7 +14,6 @@
     "ts:watch": "tsc --watch"
   },
   "dependencies": {
-    "@types/cookie-parser": "^1.4.2",
     "@types/sequelize": "^4.28.9",
     "@types/umzug": "^2.3.0",
     "axios": "^0.20.0",
