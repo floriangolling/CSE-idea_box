@@ -14,11 +14,13 @@
     "ts:watch": "tsc --watch"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.1",
     "@types/sequelize": "^4.28.9",
     "@types/umzug": "^2.3.0",
     "axios": "^0.20.0",
     "body-parser": "^1.19.0",
     "buefy": "^0.9.3",
+    "bulma": "^0.9.1",
     "cookie-parser": "^1.4.5",
     "core-js": "^3.6.5",
     "dotenv": "^8.2.0",

@@ -36,6 +36,21 @@ ideasRouter.post('/', async function (req: Request, res: Response) {
         else
             res.status(200).send(idea);
     } catch (err) {
+        console.log(err);
+        res.status(500).send(err);
+    }
+});
+
+ideasRouter.put('/:id', async function (req: Request, res: Response) {
+
+    try {
+        let idea = await Idea.update({ like: req.body.like }, {where:{ id: req.params.id}})
+        if (!idea)
+            res.sendStatus(404);
+        else {
+            res.status(200).send(idea);
+        }
+    } catch (err) {
         res.status(500).send(err);
     }
 });
