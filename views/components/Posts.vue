@@ -22,11 +22,12 @@
 
 import Vue from 'vue'
 import axios from 'axios'
+import Iidea from '../../src/interfaces/interfaces'
 
 export default Vue.extend({
     name: "posts",
     props: {
-        idea: Object,
+        idea: Object as () => Iidea,
     },
     data() {
         return {
@@ -34,7 +35,7 @@ export default Vue.extend({
         }
     },
     methods: {
-        async addLike(idea: any) {
+        async addLike(idea: Iidea) {
             try {
                 await axios.put('/api/ideas/' + idea.id, {
                     like: idea.like + 1
@@ -46,10 +47,10 @@ export default Vue.extend({
         },
         async showMore() {
             if (this.show === "Afficher plus..") {
-                document.getElementById(this.idea.id)!.style.webkitLineClamp = "unset";
+                document.getElementById(this.idea.id.toString())!.style.webkitLineClamp = "unset";
                 this.show = "Afficher moins.."
             } else if (this.show === "Afficher moins..") {
-                document.getElementById(this.idea.id)!.style.webkitLineClamp = "2";
+                document.getElementById(this.idea.id.toString())!.style.webkitLineClamp = "2";
                 this.show = "Afficher plus.."
             }
         }

@@ -17,11 +17,10 @@
     "types": [
       "webpack-env",
       "webpack",
-      "webpack-env"
     ],
     "paths": {
       "@/*": [
-        "src/*"
+        "src/*",
       ]
     },
     "lib": [
@@ -34,5 +33,6 @@
   "include": [
     "src/*.ts",
     "src/**/*.ts",
+    "shims-vue.d.ts",
   ],
 }

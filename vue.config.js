@@ -5,5 +5,5 @@ module.exports = {
   filenameHashing: false,
   pages: {
     ideaList: 'views/pages/ideaList/main.ts',
-  }
+  },
 }

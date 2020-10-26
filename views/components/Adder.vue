@@ -26,7 +26,7 @@ export default Vue.extend({
                     return;
                 }
                 let obj = await this.$store.dispatch('addIdea');
-                await this.$root.$emit('ideaAdded', obj)
+                await this.$root.$emit('ideaAdded', obj.data)
                 this.$alert("Idée bien proposée !")
                 this.title = "";
                 this.user = "";

@@ -19,10 +19,11 @@
 <script lang="ts">
 
 import Vue from 'vue';
-import Posts from '../../components/Posts'
-import Adder from '../../components/Adder'
+import Posts from '../../components/Posts.vue'
+import Adder from '../../components/Adder.vue'
 import axios from 'axios'
 import { store } from './store';
+import Iidea from '../../../src/interfaces/interfaces'
 
 export default Vue.extend({
   store: store,
@@ -33,7 +34,7 @@ export default Vue.extend({
   },
   data () {
     return {
-      ideas: [],
+      ideas: [] as Iidea[],
       dateCall: 0,
       likeCall: 0
     }
@@ -74,11 +75,11 @@ export default Vue.extend({
     } catch (err) {
       console.log(err);
     }
-    this.$root.$on('ideaAdded', async(idea: any) => {
-      let objs = [] as any;
+    this.$root.$on('ideaAdded', async(idea: Iidea) => {
+      let objs: Iidea[];
       objs = this.ideas;
-      idea.data.createdAt = convertDate(idea.data.createdAt);
-      objs.push(idea.data);
+      idea.createdAt = convertDate(idea.createdAt as Date);
+      objs.push(idea);
       objs = swap(objs);
       this.ideas = objs;
     })
@@ -91,7 +92,7 @@ function convertDate(inputFormat: Date) {
   return [pad(d.getDate()), pad(d.getMonth()+1), d.getFullYear()].join('/')
 }
 
-function compareDate(a: any, b: any) {
+function compareDate(a: Iidea, b: Iidea) {
   if (a.createdAt > b.createdAt) {
     return (-1);
   } else if (a.createdAt < b.createdAt) {
@@ -101,7 +102,7 @@ function compareDate(a: any, b: any) {
   }
 }
 
-function compareDateReverse(a: any, b: any) {
+function compareDateReverse(a: Iidea, b: Iidea) {
 
   if (a.createdAt > b.createdAt) {
     return (1);
@@ -112,7 +113,7 @@ function compareDateReverse(a: any, b: any) {
   }
 }
 
-function compareLike(a: any, b: any) {
+function compareLike(a: Iidea, b: Iidea) {
   if (a.like > b.like)
     return (1);
   else if (a.like < b.like) {
@@ -122,7 +123,7 @@ function compareLike(a: any, b: any) {
   }
 }
 
-function compareLikeReverse(a: any, b: any) {
+function compareLikeReverse(a: Iidea, b: Iidea) {
   if (a.like > b.like)
     return (-1);
   else if (a.like < b.like) {
@@ -132,7 +133,7 @@ function compareLikeReverse(a: any, b: any) {
   }
 }
 
-function swap(arra: any) {
+function swap(arra: Iidea[]) {
     [arra[0], arra[arra.length - 1]] = [arra[arra.length - 1], arra[0]];
     return arra;
 }
